@@ -1,3 +1,6 @@
+import random
+
+
 def too_old_ciper(n):
     password = []
     for i in range(1, n):
@@ -14,6 +17,8 @@ def too_old_ciper(n):
     return str_password
 
 
-number_from_first_insert = int(input('Введите число из первой вставки: '))
-result = too_old_ciper(number_from_first_insert)
-print(f'Пароль для решения : {result}')
+first_insert_list = random.sample(range(3, 21), 18)
+for i in range(18):
+    number_from_first_insert = first_insert_list[i]
+    result = too_old_ciper(number_from_first_insert)
+    print(f'Первый слот: {number_from_first_insert}\nПароль для решения: {result}')
