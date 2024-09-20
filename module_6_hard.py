@@ -1,12 +1,19 @@
 class Figure:
     sides_count = 0
 
-    def __init__(self, color, sides):
+    def __init__(self, color, *sides):
         self.__color = list(color)
         self.filled = bool
         self.__sides = []
-        for i in range(self.sides_count):
-            self.__sides.append(sides)
+        if len(sides) == 1:
+            for i in range(self.sides_count):
+                self.__sides.append(sides[0])
+        elif len(sides) == self.sides_count:
+            for side in sides:
+                self.__sides.append(side)
+        elif len(sides) != self.sides_count:
+            for i in range(self.sides_count):
+                self.__sides.append(1)
 
     def get_color(self):
         return self.__color
@@ -61,28 +68,38 @@ class Triangle(Figure):
 
 class Cube(Figure):
     sides_count = 12
+    __sides = []
+
+    def __init__(self, color, *sides):
+        super().__init__(color, *sides)
+        side = self.get_sides()[0]
+        self.__sides = []
+        for i in range(self.sides_count):
+            self.__sides.append(2)
+
 
     def get_volume(self):
-        pass
+        return self.__sides[0] ** 3
 
 
-circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
+#circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
 cube1 = Cube((222, 35, 130), 6)
+#triangle1 = Triangle((1, 1, 1), 3)
 
 # Проверка на изменение цветов:
-circle1.set_color(55, 66, 77) # Изменится
-print(circle1.get_color())
+#circle1.set_color(55, 66, 77) # Изменится
+#print(circle1.get_color())
 cube1.set_color(300, 70, 15) # Не изменится
 print(cube1.get_color())
 
 # Проверка на изменение сторон:
 cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
 print(cube1.get_sides())
-circle1.set_sides(15) # Изменится
-print(circle1.get_sides())
+#circle1.set_sides(15) # Изменится
+#print(circle1.get_sides())
 
 # Проверка периметра (круга), это и есть длина:
-print(len(circle1))
+#print(len(circle1))
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
