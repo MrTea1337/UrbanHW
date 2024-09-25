@@ -30,35 +30,24 @@ class UrTube:
                 if user.password == hash(password):
                     cls.current_user = user
 
-    def register(cls, nickname, password, age):
-        if cls.users == []:
-            temp_user = User(nickname, password, age)
-            cls.users.append(temp_user)
-            cls.current_user = temp_user
-            return
-        for user in cls.users:
-            if user.nickname != nickname or cls.users == []:
-                temp_user = User(nickname, password, age)
-                cls.users.append(temp_user)
-                cls.current_user = temp_user
-                return
-            elif user.nickname == nickname:
+    def register(self, nickname, password, age):
+        for user in self.users:
+            if user.nickname == nickname:
                 print(f"Пользователь {nickname} уже существует")
                 return
+        temp_user = User(nickname, password, age)
+        self.users.append(temp_user)
+        self.current_user = temp_user
+        return
+
 
     def log_out(cls):
         cls.current_user = None
 
-    def add(cls, *args):
+    def add(self, *args):
         for new_video in args:
-            if cls.videos == []:
-                cls.videos.append(new_video)
-            else:
-                for video in cls.videos:
-                    if video.title == new_video.title:
-                        break
-                    elif video.title != new_video.title:
-                        cls.videos.append(new_video)
+            if new_video not in self.videos:
+                self.videos.append(new_video)
 
     def get_videos(cls, user_input):
         video_list = []
