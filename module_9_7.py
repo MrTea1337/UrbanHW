@@ -1,5 +1,5 @@
 def is_prime(func):
-    def surrogate(*args):
+    def wrapper(*args):
         result = func(*args)
         prime = True
         for i in range(2, result):
@@ -11,7 +11,7 @@ def is_prime(func):
         else:
             print('Составное')
         return result
-    return surrogate
+    return wrapper
 
 
 @is_prime
