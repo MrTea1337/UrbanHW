@@ -12,9 +12,9 @@ class Bank:
         for i in range(100):
             temp_balance = randint(50, 500)
             self.balance += temp_balance
+            print(f'Пополнение: {temp_balance}. Баланс: {self.balance}')
             if self.balance >= 500 and self.lock.locked():
                 self.lock.release()
-            print(f'Пополнение: {temp_balance}. Баланс: {self.balance}')
             sleep(0.001)
 
     def take(self):
