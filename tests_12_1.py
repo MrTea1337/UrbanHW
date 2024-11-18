@@ -1,6 +1,7 @@
 import unittest
 import runner
 
+
 class RunnerTest(unittest.TestCase):
     def test_walk(self):
         walk_test_runner = runner.Runner('Danil')
@@ -19,6 +20,7 @@ class RunnerTest(unittest.TestCase):
             challenge_test_runner_1.run()
             challenge_test_runner_2.walk()
         self.assertNotEqual(challenge_test_runner_1.distance, challenge_test_runner_2.distance)
+
 
 if __name__ == "__main__":
     unittest.main()
