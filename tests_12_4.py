@@ -43,7 +43,7 @@ logging.basicConfig(
     filename="runner_tests.log",
     filemode="w",
     encoding="utf-8",
-    format="%(asctime)s | %(levelname)s | %(message)s | %(processName)s "
+    format="%(asctime)s | %(levelname)s | %(message)s"
 )
 
 if __name__ == "__main__":
