@@ -14,7 +14,7 @@ class UserState(StatesGroup):
     growth = State()
     weight = State()
 
-users = get_all_products()
+products = get_all_products()
 
 kb = ReplyKeyboardMarkup(resize_keyboard=True, keyboard=[
     [KeyboardButton(text='Рассчитать'), KeyboardButton(text='Информация')],
@@ -78,7 +78,7 @@ async def send_calories(message, state):
 
 @dp.message_handler(text=['Купить'])
 async def get_buying_list(message):
-    for title, description, price in users:
+    for title, description, price in products:
         with open('product.png', "rb") as img:
             await message.answer(f'Название: {title} | Описание: {description} | Цена: {price}')
             await message.answer_photo(img)
