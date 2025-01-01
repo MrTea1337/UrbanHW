@@ -1,4 +1,4 @@
-from typing import Annotated, List
+from typing import Annotated
 from fastapi import FastAPI, Path, HTTPException
 from pydantic import BaseModel
 
@@ -36,7 +36,6 @@ async def update_user(username: Annotated[str, Path(min_length=5, max_length=20,
         edit_user.username = username
         edit_user.age = age
         return edit_user
-
     except StopIteration:
         raise HTTPException(status_code=404, detail='User was not found')
 
